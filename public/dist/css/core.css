@@ -1,0 +1,443 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body {
+  font-family: Verdana, Arial, '宋体';
+  font-size: 12px;
+}
+strong {
+  font-family: '微软雅黑';
+  font-size: 14px;
+  color: #000;
+  font-weight: 800;
+}
+li {
+  list-style: none;
+  list-style-type: none;
+}
+h2,
+h3,
+h4,
+h5,
+h6,
+em {
+  font-weight: bold;
+}
+.cb {
+  clear: both;
+}
+.dn {
+  display: none;
+}
+.head {
+  height: 80px;
+  width: 100%;
+  background: #2453b3;
+}
+.head .head_content {
+  width: 1200px;
+  height: 80px;
+  margin: auto;
+}
+.head img {
+  margin-top: 16px;
+  display: block;
+  float: left;
+}
+.head .my_option {
+  display: block;
+  font-size: 14px;
+  color: #fff;
+  width: 64px;
+  height: 80px;
+  cursor: pointer;
+  line-height: 80px;
+  margin-left: 50px;
+  text-align: center;
+  float: left;
+}
+.head .my_set {
+  float: right;
+  font-size: 14px;
+  color: #fff;
+  width: 64px;
+  height: 80px;
+  cursor: pointer;
+  line-height: 80px;
+  margin-left: 50px;
+  text-align: center;
+  position: relative;
+}
+.head .my_set:hover div {
+  display: block;
+}
+.head .my_set > div {
+  display: none;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px #888;
+  background: #FFFFFF;
+  width: 80px;
+  left: 10px;
+  top: 57px;
+  position: absolute;
+  border-radius: 4px;
+}
+.head .my_set > div li {
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  color: #000000;
+  text-align: center;
+  border-bottom: 1px solid #CCCCCC;
+}
+.head .my_set > div li:hover {
+  color: #ff6261;
+}
+.head .my_set .set1 {
+  display: block;
+  border: 1px solid #ccc;
+  background: #FFFFFF;
+  width: 400px;
+  height: 100px;
+  left: -307px;
+  top: 57px;
+  position: absolute;
+  border-radius: 4px;
+}
+.head .my_set .set1 .li {
+  display: block;
+  height: 50px;
+  float: left;
+  margin-left: 20px;
+  line-height: 50px;
+}
+.head .my_set .set1 .li input {
+  margin: auto;
+  display: inline;
+}
+.head .my_set .set1 .li label {
+  font-weight: normal;
+  margin: auto;
+  color: #000;
+  display: inline;
+}
+.allcontent {
+  width: 1200px;
+  height: 700px;
+  margin: auto;
+}
+.option_line {
+  height: 50px;
+  width: 900px;
+  margin-top: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-bottom: 1px solid #ccc;
+}
+.register_box {
+  width: 320px;
+  height: 400px;
+  margin: auto;
+  margin-top: 24px;
+  color: #adadad;
+  text-align: center;
+  line-height: 26px;
+}
+.register_box .input_box {
+  height: 48px;
+  width: 320px;
+  border-radius: 5px;
+  border: 1px solid #adadad;
+  margin-top: 15px;
+}
+.register_box .input_box .fa {
+  line-height: 46px;
+  margin-left: 14px;
+}
+.register_box .input_box input {
+  border: none;
+  height: 46px;
+  float: right;
+  width: 262px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+.register_box .code_input {
+  height: 48px;
+  width: 300px;
+  border-radius: 5px;
+  padding-left: 20px;
+  float: left;
+  margin-top: 15px;
+  text-align: left;
+  border: 1px solid #adadad;
+}
+.register_box .send_code {
+  height: 48px;
+  width: 13px;
+  border-radius: 5px;
+  margin-left: 20px;
+  border: 1px solid #2e6be6;
+  color: #2e6be6;
+  line-height: 48px;
+  float: left;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.register_box .send_codeFill {
+  height: 48px;
+  width: 320px;
+  border-radius: 5px;
+  border: 1px solid #2e6be6;
+  color: #2e6be6;
+  line-height: 48px;
+  float: left;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.register_box .su_bmit {
+  cursor: pointer;
+  height: 48px;
+  width: 320px;
+  border-radius: 5px;
+  line-height: 48px;
+  background: #2e6be6;
+  margin-top: 20px;
+  color: #fff;
+}
+.register_box .v_code {
+  margin-top: 15px;
+}
+.register_box .v_code img {
+  border-radius: 5px;
+  float: left;
+}
+.register_box .v_code .code_input {
+  width: 153px;
+  float: right;
+  margin-top: 0px;
+}
+.login-box {
+  width: 360px;
+  height: 376px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -180px;
+  margin-top: -188px;
+}
+.login-box .login-top {
+  border-bottom: 1px solid #ebebeb;
+  height: 50px;
+  line-height: 50px;
+}
+.login-box .login-top .t-account {
+  color: #333333;
+  margin-left: 20px;
+  float: left;
+  font-size: 16px;
+}
+.login-box .login-top .t-user {
+  color: #3366cc;
+  margin-right: 20px;
+  float: right;
+  font-size: 13px;
+  cursor: pointer;
+}
+.login-box .lg-input {
+  width: 322px;
+  height: 48px;
+  border: 1px solid #cccccc;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+.login-box .lg-input .lg-input-icon {
+  color: gray;
+  margin-left: 18px;
+}
+.login-box .lg-input .la-input-control {
+  width: 200px;
+  margin-top: 11px;
+  border: none;
+  outline: none;
+}
+.login-box .lg-ver {
+  width: 322px;
+  height: 48px;
+  margin: 20px auto;
+}
+.login-box .lg-ver .ver-entry {
+  padding-left: 20px                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
+  width: 160px;
+  height: 48px;
+  outline: none;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+.login-box .lg-ver .ver-gain {
+  height: 48px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  line-height: 48px;
+  text-align: center;
+}
+.login-box .lg-ver .ver-gain {
+  width: 140px;
+  float: right;
+  color: #3366cc;
+  border: 1px solid #3366cc;
+  cursor: pointer;
+}
+.login-box .lg-land {
+  width: 322px;
+  height: 48px;
+  border: 1px solid #cccccc;
+  margin: 20px auto;
+  border-radius: 5px;
+  background: #2e6be6;
+  text-align: center;
+  line-height: 48px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+.login-box .lg-forget {
+  color: #3366cc;
+  float: right;
+  margin-right: 20px;
+}
+.lg-opacity {
+  height: 200px;
+  width: 100%;
+  opacity: 0.5;
+  margin: 700px 0 80px 0;
+  background-color: #bfc3c8;
+}
+.lg-opacity .opa-w {
+  width: 1200px;
+  margin: auto;
+  border: 1px solid red;
+  height: 200px;
+}
+.lg-opacity .opa-w .opa-content {
+  width: 750px;
+  height: 120px;
+  background: black;
+  margin: 40px auto;
+  color: white;
+}
+.lg-opacity .opa-w .opa-content .opa-wl {
+  float: left;
+  width: 300px;
+  height: 115px;
+  border: 1px solid red;
+}
+.lg-opacity .opa-w .opa-content .opa-wl .paitou {
+  font-size: 17px;
+}
+.lg-opacity .opa-w .opa-content .opa-wl .little {
+  font-size: 14px;
+  float: left;
+  margin-right: 23px;
+  margin-top: 10px;
+}
+.lg-opacity .opa-w .opa-content .opa-wr {
+  width: 300px;
+  height: 115px;
+  float: left;
+  margin-left: 150px;
+  border: 1px solid red;
+}
+.lg-opacity .opa-w .opa-content .opa-wr .paitou {
+  font-size: 17px;
+}
+.lg-opacity .opa-w .opa-content .opa-wr .little {
+  font-size: 14px;
+  margin-top: 10px;
+  float: left;
+  margin-right: 23px;
+}
+.home {
+  width: 1200px;
+  margin: auto;
+  margin-top: 60px;
+  min-height: 700px;
+}
+.allset2 {
+  width: 900px;
+  margin: auto;
+  margin-top: 60px;
+}
+.allset2 .produ {
+  font-weight: bold;
+  font-size: 17px;
+}
+.allset2 .produ2 {
+  float: left;
+  line-height: 17px;
+}
+.allset2 .add {
+  float: right;
+  margin-right: 60px;
+  height: 25px;
+  width: 80px;
+  background: #2453b3;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  line-height: 25px;
+}
+.allset2 .line {
+  width: 60px;
+  height: 4px;
+  background: #2453b3;
+  margin-top: 5px;
+}
+.allset2 .line2 {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  margin-bottom: 8px;
+}
+.allset2 .ne-ws {
+  font-size: 16px;
+  float: left;
+  width: 112.5px;
+  text-align: left;
+}
+.allset2 .fl {
+  clear: both;
+}
+.choses {
+  margin-top: 60px;
+}
+.choses .li {
+  width: 150px;
+  display: block;
+  float: left;
+}
+.choses .li label {
+  font-weight: normal;
+}
+.setSubmit {
+  width: 222px;
+  height: 48px;
+  border: 1px solid #cccccc;
+  margin: 80px auto;
+  border-radius: 5px;
+  background: #2e6be6;
+  text-align: center;
+  line-height: 48px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+.disable {
+  background: #ccc;
+  pointer-events: none;
+}

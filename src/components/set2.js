@@ -25,17 +25,20 @@ export default class Seting2 extends Component {
             img:'http://www.dongh123.cn/api/vCode?w=168&h=48',
             codeInput:true,
             setData:[],
-            set1chose:''
+            set1chose:'',
+            set1ji:''
         }
         this.del=this.del.bind(this);
         this.getalldata=this.getalldata.bind(this);
+        this.add =this.add.bind(this);
     }
     getalldata(){
         const _this = this;
         fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry','')
               .then(data=>{
                 _this.setState({
-                     setData:data.attributes.list[0]
+                     setData:data.attributes.list[0],
+                     set1ji:data.attributes.userIndustry.industryName
                 })
               })
     } 
@@ -60,10 +63,14 @@ export default class Seting2 extends Component {
               })
     }
    }
+   add(index){
+     alert(index);
+   }
 
     render() {
-      let { setData }= this.state;
-      console.log('sdfasdfas',setData)
+      let { setData,set1ji}= this.state;
+      console.log(set1ji);
+      setData = setData[set1ji];
       let all= [];
      
       let getline = (lineobj) =>{
@@ -82,38 +89,28 @@ export default class Seting2 extends Component {
           //  line.push(<div className="fl"></div>)
           return line
       }
-
-      let getBlock =(blockobj) =>{
-          let block = [];
-          for(let key in blockobj ){
-            block.push(   
-                      <div className="one-block">
-                            {getline(blockobj[key])}
-                       </div>
-                       ) 
-
-          }
-          return block
-      }
       let getElement = () =>{
         for (let index in setData){
+          console.log('sssssss===ssss', setData[index]);
              all.push(
                     <div className="allset2" key={index}>
                         <div className="produ produ2">{index}</div>
                         <div
-                         onClick={()=>add()}
+                         onClick={()=>this.add(index)}
                          className="add">添加</div>
                         <div className='fl'></div>
                         <div className="line2"></div>
                         <div>
-                        {getBlock(setData[index])}
+                        <div className="one-block">
+                        {getline(setData[index])}
+                        </div>
                         </div>
                         <div className="fl"></div>
 
                     </div>
               )
 
-        }
+        } 
           return all
       }
       // let alldatas=this.state.alldata

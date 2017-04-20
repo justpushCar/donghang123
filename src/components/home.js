@@ -41,6 +41,7 @@ export default class home extends Component {
                 })
 
               })
+              setCookie('industryName',industryName,1)
     }
     componentWillMount(){
                const _this = this;
@@ -62,45 +63,41 @@ export default class home extends Component {
 
 
     render() {
-      let { setData }= this.state;
+      let { setData, industry1value} = this.state;
+      console.log(industry1value);
+      setData = setData[industry1value];
       let all= [];
 
       let getline = (lineobj) =>{
           let line = [];
+          console.log('=>>>>>',lineobj)
           lineobj.三级行业.forEach((lineVal,lineKey)=>{
             line.push(
-                         <div key={lineKey} className="ne-ws"><a style={{color:"#000"}} href={"http://"+lineVal.urlAddress}>{lineVal.urlName}</a></div>
-                       )
-          })
-          line.push(<div className="fl"></div>)
-          return line
-      }
-
-      let getBlock =(blockobj) =>{
-          let block = [];
-          for(let key in blockobj ){
-            block.push(
-                      <div className="one-block">
-                         <div>
-                            {getline(blockobj[key])}
+                         <div className="ne-ws">
+                           <a style={{color:"#000"}} href={"http://"+lineVal.urlAddress}>{lineVal.urlName}</a>
                          </div>
-                         <div className="fl"></div>
-                       </div>
                        )
 
-          }
-          return block
+          })
+          //  line.push(<div className="fl"></div>)
+          return line
       }
       let getElement = () =>{
         for (let index in setData){
+          console.log('sssssss===ssss', setData[index]);
              all.push(
                     <div className="allset2" key={index}>
-                    <div className="produ">{index}</div>
-                    <div className="line"></div>
-                    <div>
-                     {getBlock(setData[index])}
+                        <div className="produ produ2">{index}</div>
+                        <div className='fl'></div>
+                        <div className="line2"></div>
+                        <div>
+                        <div className="one-block">
+                        {getline(setData[index])}
+                        </div>
+                        </div>
+                        <div className="fl"></div>
+
                     </div>
-                </div>
               )
 
         }

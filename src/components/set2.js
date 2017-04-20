@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import Head from './head'
-import Modal from '../components/bootstartp_modal.js'
+import Addmode from './addModal'
 import {  hashHistory } from 'react-router'
 import classNames from 'classnames';
 import {fetchApiGetJson} from '../sagas/utils'
@@ -27,30 +27,18 @@ export default class Seting2 extends Component {
             setData:[],
             set1chose:'',
             set1ji:'',
-            industry1value:''  //选择的一级行业
+            industry1value:'',  //选择的一级行业
+            showModal:"false",
+            modalObj:''
         }
         this.del=this.del.bind(this);
         this.getalldata=this.getalldata.bind(this);
         this.add =this.add.bind(this);
     }
-       init(industryName =''){
-               const _this = this;
-               //http://www.dongh123.cn/api/industry/listIndustry  一级行业接口
-              //2级行业 http://www.dongh123.cn/api/industry/listSecIndustry?industryName=1
-              // 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1
-               fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry?industryName='+industryName,'')
-              .then(data=>{
-                 console.log('dadta==============>',data.attributes.userIndustry.industryName);
-                _this.setState({
-                     setData:data.attributes.list[0],
-                     industry1value:data.attributes.userIndustry.industryName
-                })
-
-              })
-    }
     getalldata(){
+        let industryName = getCookie('industryName')
         const _this = this;
-        fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry','')
+        fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry?industryName='+industryName,'')
               .then(data=>{
                 _this.setState({
                      setData:data.attributes.list[0],
@@ -80,11 +68,20 @@ export default class Seting2 extends Component {
     }
    }
    add(index){
-     alert(index);
+       let {set1ji}=this.state;
+       this.setState({
+                 showModal:"true",
+                 modalObj:{industryName:set1ji,industryName2:index}
+            })
+   }
+   close(){
+     this.setState({
+                     showModal:false
+                })
    }
 
     render() {
-      let { setData, set1ji} = this.state;
+      let { setData, set1ji, modalObj,showModal} = this.state;
       console.log(set1ji);
       setData = setData[set1ji];
       let all= [];
@@ -136,6 +133,7 @@ export default class Seting2 extends Component {
                 <Head/>
                 {getElement()}
                 <div style={{height:"200px"}}></div>
+                <Addmode showModal={showModal} close={this.close.bind(this)} modalObj={modalObj}/>
             </div>
     )
   }

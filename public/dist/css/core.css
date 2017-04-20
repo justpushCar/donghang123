@@ -97,7 +97,7 @@ em {
   color: #ff6261;
 }
 .head .my_set .set1 {
-  display: block;
+  display: none;
   border: 1px solid #ccc;
   background: #FFFFFF;
   width: 400px;
@@ -262,7 +262,7 @@ em {
 }
 .login-box .lg-input .la-input-control {
   width: 200px;
-  margin-top: 11px;
+  margin-top: 14px;
   border: none;
   outline: none;
 }

@@ -1,6 +1,6 @@
 /**
  * Created by n on 2017/3/12.
- */ 
+ */
 
 import React, {Component} from 'react';
 import Head from './head'
@@ -13,9 +13,9 @@ import {getCookie,setCookie} from '../sagas/utils.js'
 export default class Seting extends Component {
     constructor(props){
         super(props)
-        // if(getCookie('donghangName')===''){
-        //     hashHistory.push('/login');
-        // }
+        if(getCookie('donghangName')===''){
+            hashHistory.push('/login');
+        }
         this.state={
             show: 'flase',
             content:"",
@@ -32,7 +32,7 @@ export default class Seting extends Component {
       set1chose:this.state.set1Data[key].industryName
      })
      //http://www.dongh123.cn/api/userIndustry/initUserUrlIndustry?industryName
-     
+
     }
    set1submit(){
      fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/initUserUrlIndustry?industryName='+this.state.set1chose,'')
@@ -48,7 +48,7 @@ export default class Seting extends Component {
       const _this = this;
         //http://www.dongh123.cn/api/industry/listIndustry  一级行业接口
         //2级行业 http://www.dongh123.cn/api/industry/listSecIndustry?industryName=1
-        // 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1 
+        // 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1
                fetchApiGetJson('http://www.dongh123.cn/api/industry/listIndustry','')
               .then(data=>{
                 _this.setState({
@@ -69,10 +69,10 @@ export default class Seting extends Component {
 
      // let alldatas=this.state.alldata
      // console.log(alldatas);
-     
+
      const {set1chose} = this.state;
      const set1submitClass = classNames( 'setSubmit',{disable:!set1chose});
-     
+
         return (
             <div>
                 <Head/>
@@ -82,7 +82,7 @@ export default class Seting extends Component {
                         <div className='choses'>
                         {
                           this.state.set1Data.map((vlue,key)=>{
-                              
+
                              return <div className='li' key={key} >
                                       <input type='radio' id={`checkbox${key}`} name="set1" onChange={()=>this.getSet1(key)} />
                                       <label htmlFor={`checkbox${key}`} >{vlue.industryName}</label>
@@ -92,13 +92,13 @@ export default class Seting extends Component {
                           <div className="cb"></div>
                         </div>
                         <div  className={set1submitClass} onClick={this.set1submit.bind(this)}>提交</div>
-                       
+
                     </div>
                     <div className="all">
                     </div>
                 </div>
             </div>
-    
+
     )
     }
 };

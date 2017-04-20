@@ -58,7 +58,7 @@ export default class Register extends Component {
                        content:"用户已存在"
                     })
                 }
-            }      
+            }
          }
     }
     modal_close(){
@@ -68,19 +68,19 @@ export default class Register extends Component {
     }
     blur(){
         this.props.SetLogin()
-        if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){ 
+        if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){
             this.setState({
                show:"true" ,
                content:"请输入正确手机号码"
             })
          }
-        if(this.props.password.length<6 && this.props.password.length>0){ 
+        if(this.props.password.length<6 && this.props.password.length>0){
             this.setState({
                show:"true" ,
                content:"密码不能少于6位数"
             })
          }
-       if(this.props.repassword.length<6 && this.props.repassword.length>0){ 
+       if(this.props.repassword.length<6 && this.props.repassword.length>0){
             this.setState({
                show:"true" ,
                content:"密码不能少于6位数"
@@ -96,7 +96,7 @@ export default class Register extends Component {
                })
           }
           else{
-              if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){ 
+              if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){
                   this.setState({
                      show:"true" ,
                      content:"请输入正确手机号码"
@@ -119,7 +119,7 @@ export default class Register extends Component {
                })
           }
           else{
-              if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){ 
+              if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){
                     this.setState({
                        show:"true" ,
                        content:"请输入正确手机号码"
@@ -145,7 +145,7 @@ export default class Register extends Component {
         console.log(getCookie('donghangName'))
     }
     render() {
-     
+
         return (
               <div>
                  <Head/>
@@ -159,17 +159,17 @@ export default class Register extends Component {
                               <i className="fa fa-mobile fa-2x pull-left"></i>
                               <input type="text" className="iphone" onBlur={this.blur.bind(this)}
                               onChange={(e)=>this.props.changevalue(e.target.value,'iphone')} placeholder="手机号码(仅支持中国大陆)"/>
-                         </div> 
+                         </div>
                          <div className="input_box">
                               <i className="fa fa-lock fa-2x pull-left"></i>
                               <input type="password" className="password1" placeholder="密码" onBlur={this.blur.bind(this)}
                                onChange={(e)=>this.props.changevalue(e.target.value,'password')} /><br/>
-                         </div> 
+                         </div>
                          <div className="input_box">
                               <i className="fa fa-lock fa-2x pull-left"></i>
                               <input type="password" className="password2" placeholder="确认密码" onBlur={this.blur.bind(this)}
                               onChange={(e)=>this.props.changevalue(e.target.value,'repassword')} /><br/>
-                         </div> 
+                         </div>
                          <div className="v_code">
                               <img src={this.state.img} onClick={this.chang_img.bind(this)}/>
                              <input className="code_input"  type='text' placeholder="图形验证码"  onChange={(e)=>this.props.changevalue(e.target.value,'imgcode')} />
@@ -181,18 +181,18 @@ export default class Register extends Component {
                              <div className={classNames({dn:!this.state.codeInput,send_codeFill:this.state.codeInput})} onClick={()=>this.getcode()} >获短信取验证码</div>
                              <div className="cb"></div>
                          </div>
-                          
+
                          <div  onClick={(e)=>this.onClickregister(e)} className="su_bmit" >
                          提交</div>
                      </div>
                        <Modal  content={this.state.content} showModal={this.state.show} close={this.modal_close.bind(this)}/>
                  </div>
-             
+
               </div>
 
         )
     }
-        
+
 
  };
- 
+

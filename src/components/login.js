@@ -30,19 +30,19 @@ export default class Login extends Component {
     }
     blur(){
 
-        if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){ 
+        if(!(/^1\d{10}$/.test(this.props.iphone)) && (this.props.iphone.length>0)){
             this.setState({
                show:"true" ,
                content:"请输入正确手机号码"
             })
          }
-        if(this.props.password.length<6 && this.props.password.length>0){ 
+        if(this.props.password.length<6 && this.props.password.length>0){
             this.setState({
                show:"true" ,
                content:"密码不能少于6位数"
             })
          }
-       if(this.props.repassword.length<6 && this.props.repassword.length>0){ 
+       if(this.props.repassword.length<6 && this.props.repassword.length>0){
             this.setState({
                show:"true" ,
                content:"密码不能少于6位数"
@@ -70,7 +70,7 @@ export default class Login extends Component {
                 if(data.resultStatus==="SUCCESS"){
                     setCookie('donghangName',phone,1)
                     hashHistory.push('/set')
-                }else { 
+                }else {
                     _this.setState({
                         show:"true" ,
                         content:"用户名或密码错误",
@@ -87,7 +87,7 @@ export default class Login extends Component {
       })
     }
     render() {
-     
+
         return (
             <div >
                 <Head/>
@@ -119,7 +119,7 @@ export default class Login extends Component {
             </div>
         )
     }
-        
+
 
  };
- 
+

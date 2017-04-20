@@ -9,13 +9,13 @@ export default class Head extends Component {
         super(props)
        // if(getCookie('donghangName')){
             this.state={
-                show:true
+                show:false
             }
-        this.getSet1=this.getSet1.bind(this);     
+        this.getSet1=this.getSet1.bind(this);
     }
 
     componentDidMount() {
-        if(!getCookie('donghangName')){
+        if(getCookie('donghangName')){
             this.setState({
                 show:true
             })
@@ -23,22 +23,26 @@ export default class Head extends Component {
     }
     quit(){
         delAllCookie()
-        hashHistory.push('/login')
+        fetchApiGetJson('http://www.dongh123.cn/api/logout','')
+              .then(data=>{
+              })
+        hashHistory.push('/login');
+
+
     }
     linkTo(){
         hashHistory.push('/')
     }
     getSet1(index){
         let {set1list,homeinit}=this.props
-         fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry?industryName='+set1list[index].industryName,'')
+         fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/initUserUrlIndustry?industryName='+set1list[index].industryName,'')
               .then(data=>{
-                  homeinit();
+                  homeinit(set1list[index].industryName);
               })
     }
 
     render() {
         let {set1list, page, industry1value}=this.props
-        console.log( 'home========》',page, set1list,industry1value);
         return (
             <div className="head">
                 <div className="head_content">
@@ -55,11 +59,11 @@ export default class Head extends Component {
                     { (page == 'home')?
                       (
                         <div className={classNames({my_set:true,dn:!this.state.show})}  >
-                          <span>{industry1value}</span>
+                          <span>{industry1value}  <i className="fa fa-chevron-down fa-1"></i></span>
                           <div className='set1'>
                            {
                               set1list.map((vlue,key)=>{
-                                  
+
                                  return <div className='li' key={key} >
                                           <input type='radio' id={`checkbox${key}`} name="set1" onChange={()=>this.getSet1(key)} />
                                           <label htmlFor={`checkbox${key}`} >{vlue.industryName}</label>

@@ -1,10 +1,10 @@
 /**
  * Created by n on 2017/3/12.
- */ 
+ */
 //http://www.dongh123.cn/api/industry/listIndustry  一级行业接口
 //2级行业 http://www.dongh123.cn/api/industry/listSecIndustry?industryName=1
-// 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1 
-           
+// 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1
+
 
 import React, {Component} from 'react';
 import Head from './head'
@@ -26,11 +26,27 @@ export default class Seting2 extends Component {
             codeInput:true,
             setData:[],
             set1chose:'',
-            set1ji:''
+            set1ji:'',
+            industry1value:''  //选择的一级行业
         }
         this.del=this.del.bind(this);
         this.getalldata=this.getalldata.bind(this);
         this.add =this.add.bind(this);
+    }
+       init(industryName =''){
+               const _this = this;
+               //http://www.dongh123.cn/api/industry/listIndustry  一级行业接口
+              //2级行业 http://www.dongh123.cn/api/industry/listSecIndustry?industryName=1
+              // 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1
+               fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry?industryName='+industryName,'')
+              .then(data=>{
+                 console.log('dadta==============>',data.attributes.userIndustry.industryName);
+                _this.setState({
+                     setData:data.attributes.list[0],
+                     industry1value:data.attributes.userIndustry.industryName
+                })
+
+              })
     }
     getalldata(){
         const _this = this;
@@ -41,7 +57,7 @@ export default class Seting2 extends Component {
                      set1ji:data.attributes.userIndustry.industryName
                 })
               })
-    } 
+    }
     componentWillMount(){
          this.getalldata()
     }
@@ -68,22 +84,22 @@ export default class Seting2 extends Component {
    }
 
     render() {
-      let { setData,set1ji}= this.state;
+      let { setData, set1ji} = this.state;
       console.log(set1ji);
       setData = setData[set1ji];
       let all= [];
-     
+
       let getline = (lineobj) =>{
           let line = [];
           console.log('=>>>>>',lineobj)
           lineobj.三级行业.forEach((lineVal,lineKey)=>{
-            line.push(   
+            line.push(
                          <div className="ne-ws">
                            <a style={{color:"#000"}} href={"http://"+lineVal.urlAddress}>{lineVal.urlName}</a>
                            <i onClick={()=>this.del(lineVal.uIndustryId)}
                            style={{cursor:"pointer",color:"#000"}} className="fa fa-close  fa-fw"></i>
                          </div>
-                       ) 
+                       )
 
           })
           //  line.push(<div className="fl"></div>)
@@ -110,7 +126,7 @@ export default class Seting2 extends Component {
                     </div>
               )
 
-        } 
+        }
           return all
       }
       // let alldatas=this.state.alldata

@@ -1,6 +1,6 @@
 /**
  * Created by n on 2017/3/12.
- */ 
+ */
 import React, {Component} from 'react';
 import Head from './head'
 import Modal from '../components/bootstartp_modal.js'
@@ -11,9 +11,9 @@ import {getCookie,setCookie} from '../sagas/utils.js'
 export default class home extends Component {
     constructor(props){
         super(props)
-        // if(getCookie('donghangName')===''){
-        //     hashHistory.push('/login');
-        // }
+        if(getCookie('donghangName')===''){
+            hashHistory.push('/login');
+        }
         this.state={
             show: 'flase',
             content:"",
@@ -27,27 +27,26 @@ export default class home extends Component {
         this.init=this.init.bind(this);
     }
 
-    init(){   
+    init(industryName =''){
                const _this = this;
                //http://www.dongh123.cn/api/industry/listIndustry  一级行业接口
               //2级行业 http://www.dongh123.cn/api/industry/listSecIndustry?industryName=1
-              // 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1 
-               fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry','')
+              // 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1
+               fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry?industryName='+industryName,'')
               .then(data=>{
-                 alert(data.attributes.userIndustry.industryName)
                  console.log('dadta==============>',data.attributes.userIndustry.industryName);
                 _this.setState({
                      setData:data.attributes.list[0],
                      industry1value:data.attributes.userIndustry.industryName
                 })
-               
+
               })
     }
     componentWillMount(){
                const _this = this;
                this.init();
                fetchApiGetJson('http://www.dongh123.cn/api/industry/listIndustry','')
-              .then(data=>{  
+              .then(data=>{
                 _this.setState({
                      set1list:data.attributes.list
                 })
@@ -65,13 +64,13 @@ export default class home extends Component {
     render() {
       let { setData }= this.state;
       let all= [];
-     
+
       let getline = (lineobj) =>{
           let line = [];
           lineobj.三级行业.forEach((lineVal,lineKey)=>{
-            line.push(   
+            line.push(
                          <div key={lineKey} className="ne-ws"><a style={{color:"#000"}} href={"http://"+lineVal.urlAddress}>{lineVal.urlName}</a></div>
-                       ) 
+                       )
           })
           line.push(<div className="fl"></div>)
           return line
@@ -80,14 +79,14 @@ export default class home extends Component {
       let getBlock =(blockobj) =>{
           let block = [];
           for(let key in blockobj ){
-            block.push(   
+            block.push(
                       <div className="one-block">
                          <div>
                             {getline(blockobj[key])}
                          </div>
                          <div className="fl"></div>
                        </div>
-                       ) 
+                       )
 
           }
           return block

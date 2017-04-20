@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {  hashHistory } from 'react-router'
 export function fetchApiGetText(path, params) {
     return axios.get(path + params).then(function (response) {
         return response.data;
@@ -10,7 +10,13 @@ export function fetchApiGetText(path, params) {
 export function fetchApiGetJson(path, params) {
     return axios.get(path + params)
     .then(function (response) {
-        return response.data;
+        if(response.data.resultStatus == "NEED_LOGIN"){
+            delAllCookie()
+            hashHistory.push('/login');
+        }else{
+              return response.data;
+        }
+
     }).catch(function (error) {
         console.log(error);
     });

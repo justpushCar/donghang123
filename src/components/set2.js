@@ -133,7 +133,7 @@ export default class Seting2 extends Component {
                 <Head/>
                 {getElement()}
                 <div style={{height:"200px"}}></div>
-                <Addmode showModal={showModal} close={this.close.bind(this)} modalObj={modalObj}/>
+                <Addmode showModal={showModal} close={this.close.bind(this)} modalObj={modalObj} getalldata={this.getalldata}/>
             </div>
     )
   }

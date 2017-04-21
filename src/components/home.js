@@ -32,7 +32,10 @@ export default class home extends Component {
                //http://www.dongh123.cn/api/industry/listIndustry  一级行业接口
               //2级行业 http://www.dongh123.cn/api/industry/listSecIndustry?industryName=1
               // 3级接口 http://www.dongh123.cn/api/industry/listIndustryUrl?industryName=1&secondIndustryName=1
-               fetchApiGetJson('http://www.dongh123.cn/api/userIndustry/listUserIndustry?industryName='+industryName,'')
+              let url1 = !!industryName ? ('http://www.dongh123.cn/api/userIndustry/listUserIndustry?industryName=' + industryName ) :
+              'http://www.dongh123.cn/api/userIndustry/listUserIndustry';
+
+              fetchApiGetJson(url1,'')
               .then(data=>{
                  console.log('dadta==============>',data.attributes.userIndustry.industryName);
                 _this.setState({

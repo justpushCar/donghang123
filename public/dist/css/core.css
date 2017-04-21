@@ -391,6 +391,7 @@ em {
   text-align: center;
   font-size: 12px;
   line-height: 25px;
+  cursor: pointer;
 }
 .allset2 .line {
   width: 60px;
